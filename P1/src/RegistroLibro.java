@@ -19,7 +19,11 @@ import java.io.RandomAccessFile;
 	   * Numero de caracteres del campo <code>tipo</code>.
 	   */
 	   public static final int TAMANIO_TIPO = 25; 
-	    
+
+    private String titulo;
+    private String tipo;
+    private int numPag;
+
 
 	 
 	 /** 
@@ -27,6 +31,10 @@ import java.io.RandomAccessFile;
 	   */
 	   public RegistroLibro() 
 	   {
+           super();
+           setTitulo("");
+           setTipo("");
+           setNumPaginas(0);
 	   }
 
 	 /** 
@@ -39,7 +47,12 @@ import java.io.RandomAccessFile;
 	   */
 	   public RegistroLibro( int numReg, String titulo, String tipo, int numPaginas )
 	   {
-	   }
+           super(RegistroLH.REGISTRO_OCUPADO,numReg);
+           this.setTitulo(titulo);
+           this.setNumPaginas(numPaginas);
+           this.setTipo(tipo);
+
+	  }
 	 
 
 	 /** 
@@ -48,6 +61,7 @@ import java.io.RandomAccessFile;
 	   */
 	   public void setTitulo( String titulo )
 	   {
+           this.titulo = titulo;
 	   }
 
 	   
@@ -56,7 +70,8 @@ import java.io.RandomAccessFile;
 	   * @return Titulo del libro.
 	   */
 	   public String getTitulo() 
-	   { 
+	   {
+        return titulo;
 	   }
 
 	   
@@ -66,6 +81,7 @@ import java.io.RandomAccessFile;
        */
 	   public void setTipo( String tipo )
 	   {
+        this.tipo = tipo;
 	   }
 
 	   
@@ -75,6 +91,7 @@ import java.io.RandomAccessFile;
 	   */
 	   public String getTipo() 
 	   {
+           return  tipo;
 	   }
 	
 	   
@@ -84,6 +101,7 @@ import java.io.RandomAccessFile;
 	   */
 	   public void setNumPaginas( int numPaginas )
 	   {
+           numPag = numPaginas;
 	   }
 
 	   
@@ -92,7 +110,8 @@ import java.io.RandomAccessFile;
 	   * @return Numero de paginas del libro
 	   */
 	   public int getNumPaginas() 
-	   { 
+	   {
+           return numPag;
 	   }
 	
      
@@ -102,6 +121,7 @@ import java.io.RandomAccessFile;
 	   */	
 	   public int longitudRegistro()
 	   {
+           return this.TAMANIO_TIPO + this.TAMANIO_TITULO + super.longitudRegistro();
 	   } 
 	   
    
@@ -113,7 +133,11 @@ import java.io.RandomAccessFile;
 	   * @see RegistroNumReg
 	   */
 	   public void escribir(RandomAccessFile archivo) throws IOException {
-	   }
+           super.escribir(archivo);
+           archivo.writeInt( this.getNumPaginas() );
+           archivo.writeUTF(this.getTipo());
+           archivo.writeUTF(this.getTitulo());
+   	   }
 
 	   
 	 /** 
@@ -121,7 +145,12 @@ import java.io.RandomAccessFile;
 	   * @throws IOException Si se produce un error de Entrada/Salido al realizar la operacion.
 	   * @see RegistroNumReg
 	   */
-	   public void leer(RandomAccessFile archivo) throws IOException {		
+	   public void leer(RandomAccessFile archivo) throws IOException {
+           super.leer(archivo);
+           this.setNumReg( archivo.readInt());
+           this.setNumPaginas(archivo.readInt());
+           this.setTipo(archivo.readUTF());
+           this.setTitulo(archivo.readUTF());
 	   }
 
 	   
