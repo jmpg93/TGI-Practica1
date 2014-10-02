@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.IOException;
- 
+import java.io.RandomAccessFile;
+
 /**
  * Clase capaz de manipular un archivo de tipo <code>RandomAccessFile</code> 
  * compuesto por registros de tipo <code>RegistroLH</code>, con gestion de Lista de Huecos.
@@ -11,8 +12,7 @@ import java.io.IOException;
  */
 
   public class ArchivoLH extends Archivo{
-	
- 	
+
      /** 
        * Crea un objeto de tipo <code>ArchivoLH</code> inicializando el tipo de registro que es
        * capaz de manejar con el registro que se indica como primer parametro, de tipo RegistroLH. 
@@ -31,6 +31,8 @@ import java.io.IOException;
        */
        public ArchivoLH (RegistroLH registro, String nombreArchivo, String modo)throws FileNotFoundException
 	   {
+           super(registro, nombreArchivo, modo);
+
 	   } 
 
        
