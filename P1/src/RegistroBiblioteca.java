@@ -12,14 +12,21 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	 /** 
 	   * Numero de caracteres del campo <code>nombre</code>.
 	   */
-	   public static final int TAMANIO_NOMBRE = 25;		
-
+	   public static final int TAMANIO_NOMBRE = 25;
+        private String nombre;
+        private int cofigoPostal;
+        private int capacidad;
 	 
 	 /** 
 	   * Inicializa un registro con valores predeterminados. Campo control a ocupado, numero de registro el 0, nombre a cadena de caracteres vacia y codigo postal y capacidad a 0
 	   */
 	   public RegistroBiblioteca() 
 	   {
+           super();
+           this.setNombre("");
+           this.setCapacidad(0);
+           this.setCodPostal(0);
+
 	   }
 
 	 /** 
@@ -32,6 +39,10 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   */
 	   public RegistroBiblioteca( int numReg, String nombre, int codPostal, int capacidad )
 	   {
+           super(RegistroLH.REGISTRO_OCUPADO,numReg);
+           this.setNombre(nombre);
+           this.setCapacidad(capacidad);
+           this.setCodPostal(codPostal);
 	   }
 	 
 
@@ -41,6 +52,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   */
 	   public void setNombre( String nombre )
 	   {
+           this.nombre = nombre;
 	   }
 
 	   
@@ -49,7 +61,8 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   * @return Nombre de la biblioteca.
 	   */
 	   public String getNombre() 
-	   { 
+	   {
+           return  this.nombre;
 	   }
 
 	   
@@ -59,6 +72,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
       */
 	   public void setCodPostal( int codPostal )
 	   {
+           this.cofigoPostal = codPostal;
 	   }
 
 	   
@@ -68,6 +82,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   */
 	   public int getCodPostal() 
 	   {
+           return this.cofigoPostal;
 	   }
 	
 	   
@@ -77,6 +92,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   */
 	   public void setCapacidad( int capacidad )
 	   {
+           this.capacidad = capacidad;
 	   }
 
 	   
@@ -85,7 +101,8 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   * @return Capacidad de personas que admite la biblioteca
 	   */
 	   public int getCapacidad() 
-	   { 
+	   {
+           return this.capacidad;
 	   }
 
     
@@ -95,6 +112,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   */	
 	   public int longitudRegistro()
 	   {
+           return this.TAMANIO_NOMBRE + super.longitudRegistro();
 	   } 
 	   
   
@@ -106,6 +124,10 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   * @see RegistroNumReg
 	   */
 	   public void escribir(RandomAccessFile archivo) throws IOException {
+           super.escribir(archivo);
+           archivo.writeInt( this.getCapacidad() );
+           archivo.writeUTF(this.getNombre());
+           archivo.writeInt(this.getCodPostal());
 	   }
 
 	   
@@ -115,6 +137,10 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   * @see RegistroNumReg
 	   */
 	   public void leer(RandomAccessFile archivo) throws IOException {
+           super.leer(archivo);
+           this.setCapacidad( archivo.readInt());
+           this.setNombre(archivo.readUTF());
+           this.setCodPostal(archivo.readInt());
 	   }
 
 	   
@@ -125,6 +151,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   */
 	   public String toString()
 	   {
+           return "RegistroNumReg [control=" + super.getControl() + ", numReg = "+ this.getNumReg()+ "nombre = " + this.getNombre() + ", capacidad = " + this.getCapacidad() + ", codigo postal = " + this.getCodPostal() + "]";
 	   }
 
 }
