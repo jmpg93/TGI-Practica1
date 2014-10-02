@@ -54,6 +54,7 @@ import java.io.RandomAccessFile;
        */
        public ArchivoLH (RegistroLH registro, String nombreArchivo)throws FileNotFoundException
        {
+           super(registro, nombreArchivo);
        }
 	 
 
