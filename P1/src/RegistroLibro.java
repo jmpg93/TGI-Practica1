@@ -13,7 +13,8 @@ import java.io.RandomAccessFile;
 	 /** 
 	   * Numero de caracteres del campo <code>titulo</code>.
 	   */
-	   public static final int TAMANIO_TITULO = 30;		
+	   public static final int TAMANIO_TITULO = 30;
+       public static final int TAMANIO_NUMREG = (Integer.SIZE/8) ;
 
 	 /** 
 	   * Numero de caracteres del campo <code>tipo</code>.
@@ -121,8 +122,8 @@ import java.io.RandomAccessFile;
 	   */	
 	   public int longitudRegistro()
 	   {
-           return this.TAMANIO_TIPO + this.TAMANIO_TITULO + super.longitudRegistro();
-	   } 
+           return (this.TAMANIO_TIPO + this.TAMANIO_TITULO)*(Character.SIZE/8) + this.TAMANIO_NUMREG + super.longitudRegistro();
+	   }
 	   
    
 	 /** 
@@ -134,9 +135,9 @@ import java.io.RandomAccessFile;
 	   */
 	   public void escribir(RandomAccessFile archivo) throws IOException {
            super.escribir(archivo);
+           super.escribirCadena(getTitulo(), this.TAMANIO_TITULO, archivo);
+           super.escribirCadena(getTipo(), this.TAMANIO_TIPO, archivo);
            archivo.writeInt( this.getNumPaginas() );
-           archivo.writeUTF(this.getTipo());
-           archivo.writeUTF(this.getTitulo());
    	   }
 
 	   
@@ -147,10 +148,9 @@ import java.io.RandomAccessFile;
 	   */
 	   public void leer(RandomAccessFile archivo) throws IOException {
            super.leer(archivo);
-           this.setNumReg( archivo.readInt());
+           this.setTitulo(leerCadena(this.TAMANIO_TITULO, archivo));
+           this.setTipo(leerCadena(this.TAMANIO_TIPO, archivo));
            this.setNumPaginas(archivo.readInt());
-           this.setTipo(archivo.readUTF());
-           this.setTitulo(archivo.readUTF());
 	   }
 
 	   

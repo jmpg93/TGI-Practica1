@@ -68,6 +68,7 @@ import java.io.RandomAccessFile;
        * @see RegistroLH
        */
        public void leerRegistro(int posicion) throws IOException {
+           super.leerRegistro(posicion);
        }
        
 
