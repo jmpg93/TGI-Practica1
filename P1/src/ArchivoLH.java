@@ -68,6 +68,7 @@ import java.io.RandomAccessFile;
        * @see RegistroLH
        */
        public void leerRegistro(int posicion) throws IOException {
+           super.leerRegistro(posicion);
        }
        
 
@@ -103,7 +104,34 @@ import java.io.RandomAccessFile;
        * @see RegistroLH
        */
 	   public int escribirRegistro() throws IOException {
-	   }	
+        archivo.seek(0);
+        int control = archivo.readInt();
+        RegistroLH registroAux = new RegistroLH(control);
+
+        if (control == RegistroLH.FIN_LISTA){
+            // hay que ir al final con seek
+            // registro.escribir(this.archivo);
+
+        } else if (control > 0){
+            int anterior = control;
+            while(control > 0){
+                this.archivo.seek(control * this.registro.longitudRegistro());
+                anterior = control;
+                control = archivo.readInt();
+            }
+            //esto funca_?
+            registro.escribir(this.archivo);
+            this.archivo.seek(anterior * this.registro.longitudRegistro());
+            //hay que meter datos en la posicion de control, y cambiar este campo a -2 (escribiendolo)
+            archivo.writeInt(RegistroLH.FIN_LISTA);
+
+
+
+        }
+
+        return 0;
+
+       }
 	
 	   
      /** 
@@ -136,6 +164,7 @@ import java.io.RandomAccessFile;
 	   * @throws IOException Si se produce un error al realizar la operacion.
 	   */
 	   public long numRegistros() throws IOException {
+           return super.numRegistros();
 	   }
 	
 	   
