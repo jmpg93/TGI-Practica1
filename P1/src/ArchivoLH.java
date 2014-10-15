@@ -1,3 +1,5 @@
+import com.sun.swing.internal.plaf.synth.resources.synth_pt_BR;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -104,6 +106,8 @@ import java.io.RandomAccessFile;
        * @see RegistroLH
        */
 	   public int escribirRegistro() throws IOException {
+
+
 	   }	
 	
 	   
@@ -127,7 +131,8 @@ import java.io.RandomAccessFile;
        * @param posicion numero que indica la posicion del registro a borrar.
        */
 	   public void borrarRegistro(int posicion) throws IOException {
-	   }	
+
+	   }
 	
 		
      /** 
@@ -137,6 +142,7 @@ import java.io.RandomAccessFile;
 	   * @throws IOException Si se produce un error al realizar la operacion.
 	   */
 	   public long numRegistros() throws IOException {
+           return super.numRegistros();
 	   }
 	
 	   

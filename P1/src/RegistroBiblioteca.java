@@ -13,6 +13,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   * Numero de caracteres del campo <code>nombre</code>.
 	   */
 	   public static final int TAMANIO_NOMBRE = 25;
+       public static final int TAMANIO_CAPACIDAD = (Integer.SIZE/8) ;
         private String nombre;
         private int cofigoPostal;
         private int capacidad;
@@ -22,7 +23,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   */
 	   public RegistroBiblioteca() 
 	   {
-           super();
+           super(RegistroLH.REGISTRO_OCUPADO, 0);
            this.setNombre("");
            this.setCapacidad(0);
            this.setCodPostal(0);
@@ -112,7 +113,8 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   */	
 	   public int longitudRegistro()
 	   {
-           return this.TAMANIO_NOMBRE + super.longitudRegistro();
+           //Dos veces la capacidad por que es el tamanño de un entero. En este caso hay dos, capacidad y codigo postal.
+           return this.TAMANIO_NOMBRE + this.TAMANIO_CAPACIDAD*2+ super.longitudRegistro();
 	   } 
 	   
   

@@ -32,7 +32,7 @@ import java.io.RandomAccessFile;
 	   */
 	   public RegistroLibro() 
 	   {
-           super();
+           super(RegistroLH.REGISTRO_OCUPADO, 0);
            setTitulo("");
            setTipo("");
            setNumPaginas(0);
