@@ -164,5 +164,5 @@ import java.io.RandomAccessFile;
            return "RegistroNumReg [control=" + super.getControl() + ", numReg = "+ this.getNumReg()+", numPag = " + this.getNumPaginas() + ", titulo = " + this.getTitulo() + ", tipo = " + this.getTipo() + "]";
 
        }
-	   
+
   }
