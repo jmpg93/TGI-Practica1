@@ -106,30 +106,20 @@ import java.io.RandomAccessFile;
 	   public int escribirRegistro() throws IOException {
         archivo.seek(0);
         int control = archivo.readInt();
-        RegistroLH registroAux = new RegistroLH(control);
-
-        if (control == RegistroLH.FIN_LISTA){
-            // hay que ir al final con seek
-            // registro.escribir(this.archivo);
-
-        } else if (control > 0){
-            int anterior = control;
-            while(control > 0){
-                this.archivo.seek(control * this.registro.longitudRegistro());
-                anterior = control;
-                control = archivo.readInt();
-            }
-            //esto funca_?
-            registro.escribir(this.archivo);
-            this.archivo.seek(anterior * this.registro.longitudRegistro());
-            //hay que meter datos en la posicion de control, y cambiar este campo a -2 (escribiendolo)
-            archivo.writeInt(RegistroLH.FIN_LISTA);
-
-
-
+        if (control == RegistroLH.FIN_LISTA) {
+            control = (int) (this.numRegistros() + 1);
         }
+        else {
+            int anterior;
+            this.archivo.seek(control * this.registro.longitudRegistro());
+            anterior = this.archivo.readInt();
+            this.archivo.seek(0);
+            this.archivo.writeInt(anterior);
+        }
+        this.archivo.seek(control * this.registro.longitudRegistro());
+        registro.escribir(this.archivo);
 
-        return 0;
+        return control;
 
        }
 	
