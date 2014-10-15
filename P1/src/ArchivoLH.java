@@ -117,7 +117,7 @@ import java.io.RandomAccessFile;
             this.archivo.writeInt(anterior);
         }
         this.archivo.seek(control * this.registro.longitudRegistro());
-        registro.escribir(this.archivo);
+        registro.escribir(this.archivo); //suponemos que el valor de control de registro es ya REGISTRO_OCUPADO
 
         return control;
 
@@ -144,6 +144,24 @@ import java.io.RandomAccessFile;
        * @param posicion numero que indica la posicion del registro a borrar.
        */
 	   public void borrarRegistro(int posicion) throws IOException {
+           if(!(posicion < 1 || posicion > this.numRegistros()))
+           {
+                System.out.println("La posición del registro no existe");
+           }
+           else{
+               this.archivo.seek(posicion*this.registro.longitudRegistro());
+               int controlBorrado = this.archivo.readInt();  //no se como llamarlo
+               if(controlBorrado == RegistroLH.REGISTRO_OCUPADO)
+               {
+                   this.archivo.seek(0);
+                   int control = archivo.readInt(); //no se como llamarlo
+                   this.archivo.seek(posicion*this.registro.longitudRegistro());
+                   this.archivo.writeInt(control);
+                   this.archivo.seek(0);
+                   this.archivo.writeInt(posicion);
+                   
+               }
+           }
 	   }	
 	
 		
