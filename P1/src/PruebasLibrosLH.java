@@ -30,6 +30,8 @@ import java.io.FileNotFoundException;
 		    System.out.println("*****************************************************************************");
 		    System.out.println();
 
+
+
             // EJEMPLO DE INSERCION DE UN NUEVO REGISTRO
 		    // Creamos el objeto de tipo RegistroLibro con los datos a insertar, hacemos que la propiedad registro de
 		    // ArchivoLH apunte a este registro y finalmente lo escribimos en el
@@ -112,6 +114,8 @@ import java.io.FileNotFoundException;
 		     *        lista de huecos).
 		     *         
 		     */
+
+
 		    
 		}catch (IOException ioe){
 			System.out.println("Error de entrada/salida sobre archivoLibros: "+ioe.getMessage());

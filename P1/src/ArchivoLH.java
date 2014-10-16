@@ -184,7 +184,7 @@ import java.io.RandomAccessFile;
 	   * @throws IOException Si se produce un error al realizar la operacion.
 	   */
 	   public long numRegistros() throws IOException {
-           return super.numRegistros();
+           return super.numRegistros() - 1;
 	   }
 	
 	   
