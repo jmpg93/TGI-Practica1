@@ -29,7 +29,7 @@ import java.io.FileNotFoundException;
 		    archivoLibros.volcar();
 		    System.out.println("*****************************************************************************");
 		    System.out.println();
-		    
+
             // EJEMPLO DE INSERCION DE UN NUEVO REGISTRO
 		    // Creamos el objeto de tipo RegistroLibro con los datos a insertar, hacemos que la propiedad registro de
 		    // ArchivoLH apunte a este registro y finalmente lo escribimos en el

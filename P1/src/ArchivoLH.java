@@ -55,6 +55,12 @@ import java.io.RandomAccessFile;
        public ArchivoLH (RegistroLH registro, String nombreArchivo)throws FileNotFoundException
        {
            super(registro, nombreArchivo);
+           registro.setControl(RegistroLH.FIN_LISTA);
+           try {
+               super.escribirRegistro(0);
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
        }
 	 
 
@@ -68,7 +74,13 @@ import java.io.RandomAccessFile;
        * @see RegistroLH
        */
        public void leerRegistro(int posicion) throws IOException {
-           super.leerRegistro(posicion);
+           if(posicion>this.numRegistros() || posicion < 1){
+               this.archivo.seek(this.archivo.length()-this.registro.longitudRegistro());
+           }
+           else {
+               this.archivo.seek(posicion*this.registro.longitudRegistro());
+           }
+           this.registro.leer(this.archivo);
        }
        
 
