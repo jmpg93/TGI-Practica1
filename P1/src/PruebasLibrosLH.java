@@ -228,6 +228,8 @@ import java.io.FileNotFoundException;
              *
              *        5) Funciona, se insertan dos registros nuevos.
              *
+             *
+             *
 		     *  - leerRegistro. Situaciones:
 		     *  	- leer el registro 0. Validar que los datos que devuelve son del ultimo registro del fichero.
              *
@@ -242,6 +244,8 @@ import java.io.FileNotFoundException;
 		     *        al registro almacenado en la posicion indicada
              *
              *        8) Funciona, venia implementado.
+             *
+             *
              *
 		     *  - borrarRegistro. Situaciones:
 		     *      - borrar el registro 0. Validar que no tiene ningun efecto sobre el fichero.
