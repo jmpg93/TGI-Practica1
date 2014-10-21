@@ -28,9 +28,9 @@ import java.io.FileNotFoundException;
 
            RegistroBiblioteca B = new RegistroBiblioteca();
            ArchivoLH archivoBiblioteca = new ArchivoLH(B, "biblioteca.dat");
-           System.out.println("0) ********* VOLCADO del contenido del archivo al crearlo *********************");
+           System.out.println("0) ********* VOLCADO del contenido del archivo al crearlo ***********************************************************");
            archivoBiblioteca.volcar();
-           System.out.println("*******************************************************************************");
+           System.out.println("*********************************************************************************************************************");
            System.out.println();
 
            // 1) *************
@@ -45,9 +45,9 @@ import java.io.FileNotFoundException;
            //Creamos el archivo.
            ArchivoLH archivoBibliotecaCreado = new ArchivoLH(B,"biblioteca.dat");
 
-           System.out.println("1) ********* VOLCADO del contenido al crearlo cuando ya este creado ***********");
+           System.out.println("1) ******************** VOLCADO del contenido al crearlo cuando ya este creado **************************************");
            archivoBibliotecaCreado.volcar();
-           System.out.println("*******************************************************************************");
+           System.out.println("*********************************************************************************************************************");
            System.out.println();
            //*************
 
@@ -64,9 +64,9 @@ import java.io.FileNotFoundException;
            // Abrimos el archivo.
            archivoBibliotecaCreado = new ArchivoLH(B,"biblioteca.dat", "r");
 
-           System.out.println("2) ********* VOLCADO del contenido al abrirlo cuando ya este creado ***********");
+           System.out.println("2) ******************** VOLCADO del contenido al abrirlo cuando ya este creado **************************************");
            archivoBibliotecaCreado.volcar();
-           System.out.println("*******************************************************************************");
+           System.out.println("*********************************************************************************************************************");
            System.out.println();
            //*************
 
@@ -77,27 +77,23 @@ import java.io.FileNotFoundException;
            // Abrimos el archivo.
 
            //****DESCOMENTAR LINEA PARA PROBAR!****
-           // archivoLibrosCreado = new ArchivoLH(R,"librosNoExiste.dat", "r");
+           // archivoBibliotecaCreado = new ArchivoLH(R,"bibliotecaNoExiste.dat", "r");
 
-           System.out.println("3) ********* VOLCADO del contenido del archivo al abrirlo cuando no existe ****");
+           System.out.println("3) ******************** VOLCADO del contenido del archivo al abrirlo cuando no existe *******************************");
            archivoBibliotecaCreado.volcar();
-           System.out.println("*******************************************************************************");
+           System.out.println("*********************************************************************************************************************");
            System.out.println();
            //*************
 
            // 4) EJEMPLO DE INSERCION DE UN NUEVO REGISTRO
-           // Creamos el objeto de tipo RegistroLibro con los datos a insertar, hacemos que la propiedad registro de
-           // ArchivoLH apunte a este registro y finalmente lo escribimos en el
-           // archivo. Volcamos el fichero por la consola para comprobar que la insercion
-           // del registro se ha realizado correctamente
-           RegistroBiblioteca registro1 = new RegistroBiblioteca(40, "Azcona", 28002, 200);
-           registro1.setControl(RegistroLH.REGISTRO_OCUPADO);
-           archivoBiblioteca.setRegistro(registro1);
-           archivoBiblioteca.escribirRegistro();
-           System.out.println("4) *********** VOLCADO despues de aniadir el primer registro ******************");
-           archivoBiblioteca.volcar();
-           System.out.println("*******************************************************************************");
-           System.out.println();
+//           RegistroBiblioteca registro1 = new RegistroBiblioteca(20, "Azcona", 28002, 200);
+//           registro1.setControl(RegistroLH.REGISTRO_OCUPADO);
+//           archivoBiblioteca.setRegistro(registro1);
+//           archivoBiblioteca.escribirRegistro();
+//           System.out.println("4) ******************** VOLCADO despues de aniadir el primer registro ***********************************************");
+//           archivoBiblioteca.volcar();
+//           System.out.println("*********************************************************************************************************************");
+//           System.out.println();
 
 
            // 5) EJEMPLO DE INSERCION DE DOS REGISTROS MAS
@@ -110,18 +106,18 @@ import java.io.FileNotFoundException;
            registro3.setControl(RegistroLH.REGISTRO_OCUPADO);
            archivoBiblioteca.setRegistro(registro3);
            archivoBiblioteca.escribirRegistro();
-           System.out.println("5) *********** VOLCADO despues de aniadir tres registros ***********************");
+           System.out.println("5) ******************** VOLCADO despues de aniadir tres registros ***********************");
            archivoBiblioteca.volcar();
-           System.out.println("********************************************************************************");
+           System.out.println("*********************************************************************************************************************");
            System.out.println();
 
            // 6) *************
            // EJEMPLO DE LECTURA DEL REGISTRO 0
           archivoBiblioteca.leerRegistro(0);
           RegistroBiblioteca registro0 = (RegistroBiblioteca)archivoBiblioteca.getRegistro();
-          System.out.println("6) *********** DATOS del registro que esta en la posicion 0 ********************");
+          System.out.println("6) ******************** DATOS del registro que esta en la posicion 0 ************************************************");
           System.out.println(registro0.toString());
-          System.out.println("********************************************************************************");
+          System.out.println("*********************************************************************************************************************");
           System.out.println();
           //*************
 
@@ -129,37 +125,37 @@ import java.io.FileNotFoundException;
           // EJEMPLO DE LECTURA DEL UN REGISTRO FUERA DE RANGO
           archivoBiblioteca.leerRegistro(100);
           RegistroBiblioteca registroMAX = (RegistroBiblioteca)archivoBiblioteca.getRegistro();
-          System.out.println("7) *********** DATOS del registro que esta en la posicion fuera del rango ******");
+          System.out.println("7) ******************** DATOS del registro que esta en la posicion fuera del rango **********************************");
           System.out.println(registroMAX.toString());
-          System.out.println("********************************************************************************");
+          System.out.println("*********************************************************************************************************************");
           System.out.println();
           //*************
 
 
           // 8) EJEMPLO DE LECTURA DE UN REGISTRO QUE EXISTE
           archivoBiblioteca.leerRegistro(1);
-          RegistroLibro registro8 = (RegistroLibro)archivoBiblioteca.getRegistro();
-          System.out.println("8)*********** DATOS del registro que esta en la POSICION 1 **********************");
+          RegistroBiblioteca registro8 = (RegistroBiblioteca)archivoBiblioteca.getRegistro();
+          System.out.println("8) ******************** DATOS del registro que esta en la POSICION 1 ************************************************");
           System.out.println(registro8.toString());
-          System.out.println("*********************************************************************************");
+          System.out.println("*********************************************************************************************************************");
           System.out.println();
 
 
           //9) *************
           // EJEMPLO DE BORRADO DEL REGISTRO 0
           archivoBiblioteca.borrarRegistro(0);
-          System.out.println("9) *********** VOLCADO despues de borrar el registro de la POSICION 0 ***********");
+          System.out.println("9) ******************** VOLCADO despues de borrar el registro de la POSICION 0 **************************************");
           archivoBiblioteca.volcar();
-          System.out.println("*********************************************************************************");
+          System.out.println("*********************************************************************************************************************");
           System.out.println();
           //*************
 
           // 10) *************
           // EJEMPLO DE BORRADO DE UN REGISTRO FUERA DE RANGO.
           archivoBiblioteca.borrarRegistro(100);
-          System.out.println("10) *********** VOLCADO despues de borrar el registro de la POSICION 100 (FUERA DE RANGO) **********");
+          System.out.println("10) ******************** VOLCADO despues de borrar el registro de la POSICION 100 (FUERA DE RANGO) ******************");
           archivoBiblioteca.volcar();
-          System.out.println("*********************************************************************************");
+          System.out.println("*********************************************************************************************************************");
           System.out.println();
           //*************
 
@@ -169,15 +165,15 @@ import java.io.FileNotFoundException;
           archivoBiblioteca.borrarRegistro(50);
           System.out.println("11) *********** VOLCADO despues de borrar el registro de la POSICION 50 (DENTRO DE RANGO, lista de huecos) **********");
           archivoBiblioteca.volcar();
-          System.out.println("*********************************************************************************");
+          System.out.println("*********************************************************************************************************************");
           System.out.println();
           //*************
 
           // 12) EJEMPLO DE BORRADO DE UN REGISTRO QUE EXISTE
           archivoBiblioteca.borrarRegistro(2);
-          System.out.println("12) *********** VOLCADO despues de borrar el registro de la POSICION 2 **********");
+          System.out.println("12) ******************** VOLCADO despues de borrar el registro de la POSICION 2 ***************************");
           archivoBiblioteca.volcar();
-          System.out.println("*********************************************************************************");
+          System.out.println("*********************************************************************************************************************");
           System.out.println();
 
 
@@ -197,64 +193,64 @@ import java.io.FileNotFoundException;
 		     *      - el fichero existe. Validar que borra su contenido y que el archivo contiene el registro 0 completo (con todos los
 		     *        campos de un registro de tipo RegistroBiblioteca) y con el campo control a -1.
              *
-             *        1)
+             *        1)Funciona.
              *
 		     *  - constructor de ArchivoLH que ABRE el fichero. Situaciones:
 		     *  	- El fichero de registros existe. Validar que su contenido es exactamente el mismo que la ultima vez que
 		     *        se trabajo con el.
              *
-             *        2)
+             *        2)Funciona.
              *
 		     *      - El fichero de registros no existe. Debe saltar la excepcion FileNotFoundException que debera capturarse e
 		     *        indicar por la consola esta situacion mediante un mensaje de error
              *
-             *        3)
+             *        3)Funciona.
              *
 		     *  - escribirRegistro. Situaciones:
 		     *      - La lista de huecos esta vacia. Validar que el registro se ha incluido como ultimo registro del fichero y que
 		     *        el valor devuelto por el metodo es correcto
              *
-             *        4)
+             *        4)Funciona.
              *
 		     *      - La lista de huecos NO esta vacia. Validar que el registro se ha incluido en la posicion indicada por la
 		     *        cabecera de la lista de huecos y que esta se ha actualizado convenientemente. Ademas, debera comprobarse que
 		     *        el valor devuelto por el metodo es correcto.
              *
-             *        5)
+             *        5)Funciona.
              *
 		     *  - leerRegistro. Situaciones:
 		     *  	- leer el registro 0. Validar que los datos que devuelve son del ultimo registro del fichero.
              *
-             *        6)
+             *        6)Funciona.
              *
 		     *      - leer un registro que se encuentre en una posicion superior al numero de registros del fichero. Validar que
 		     *        los datos que devuelve son del ultimo registro del fichero.
              *
-             *        7)
+             *        7)Funciona.
              *
 		     *      - leer un registro que se encuentre en una posicion valida.  Validar que los datos que devuelve son los asociados
 		     *        al registro almacenado en la posicion indicada
              *
-             *        8)
+             *        8)Funciona.
              *
 		     *  - borrarRegistro. Situaciones:
 		     *      - borrar el registro 0. Validar que no tiene ningun efecto sobre el fichero.
              *
-             *        9)
+             *        9)Funciona.
              *
 		     *      - borrar un registro que se encuentre en una posicion superior al numero de registros del fichero.Validar que no
 		     *        tiene ningun efecto sobre el fichero.
              *
-             *        10)
+             *        10)Funciona.
              *
 		     *      - borrar un registro que se encuentre en la lista de huecos. Validar que no tiene ningun efecto sobre el fichero.
              *
-             *        11)
+             *        11)Funciona.
              *
 		     *      - borrar un registro que se encuentre en una posicion valida y que contenga informacion util (que no esta en la
 		     *        lista de huecos).
              *
-             *        12)
+             *        12)Funciona.
 		     *
 		     */
 

@@ -25,9 +25,9 @@ import java.io.FileNotFoundException;
 			// correctamente
 			RegistroLibro R = new RegistroLibro();
 			ArchivoLH archivoLibros= new ArchivoLH(R,"libros.dat");
-		    System.out.println("0) ********* VOLCADO del contenido del archivo al crearlo *********************");
+		    System.out.println("0) ******************** VOLCADO del contenido del archivo al crearlo ************************************************");
 		    archivoLibros.volcar();
-		    System.out.println("*******************************************************************************");
+		    System.out.println("*********************************************************************************************************************");
 		    System.out.println();
 
 
@@ -44,9 +44,9 @@ import java.io.FileNotFoundException;
             //Creamos el archivo.
             ArchivoLH archivoLibrosCreado = new ArchivoLH(R,"libros.dat");
 
-            System.out.println("1) ********* VOLCADO del contenido al crearlo cuando ya este creado ***********");
+            System.out.println("1) ******************** VOLCADO del contenido al crearlo cuando ya este creado **************************************");
             archivoLibrosCreado.volcar();
-            System.out.println("*******************************************************************************");
+            System.out.println("*********************************************************************************************************************");
             System.out.println();
             //*************
 
@@ -64,9 +64,9 @@ import java.io.FileNotFoundException;
             // Abrimos el archivo.
             archivoLibrosCreado = new ArchivoLH(R,"libros.dat", "r");
 
-            System.out.println("2) ********* VOLCADO del contenido al abrirlo cuando ya este creado ***********");
+            System.out.println("2) ******************** VOLCADO del contenido al abrirlo cuando ya este creado **************************************");
             archivoLibrosCreado.volcar();
-            System.out.println("*******************************************************************************");
+            System.out.println("*********************************************************************************************************************");
             System.out.println();
             //*************
 
@@ -81,9 +81,9 @@ import java.io.FileNotFoundException;
             //****DESCOMENTAR LINEA PARA PROBAR!****
             // archivoLibrosCreado = new ArchivoLH(R,"librosNoExiste.dat", "r");
 
-            System.out.println("3) ********* VOLCADO del contenido del archivo al abrirlo cuando no existe ****");
+            System.out.println("3) ******************** VOLCADO del contenido del archivo al abrirlo cuando no existe *******************************");
             archivoLibrosCreado.volcar();
-            System.out.println("*******************************************************************************");
+            System.out.println("*********************************************************************************************************************");
             System.out.println();
             //*************
 
@@ -97,9 +97,9 @@ import java.io.FileNotFoundException;
             registro1.setControl(RegistroLH.REGISTRO_OCUPADO);
 		    archivoLibros.setRegistro(registro1);
 		    archivoLibros.escribirRegistro();		    
-		    System.out.println("4) *********** VOLCADO despues de aniadir el primer registro ******************");
+		    System.out.println("4) ******************** VOLCADO despues de aniadir el primer registro ***********************************************");
 			archivoLibros.volcar();
-		    System.out.println("*******************************************************************************");
+		    System.out.println("*********************************************************************************************************************");
 		    System.out.println();
 
 
@@ -113,18 +113,18 @@ import java.io.FileNotFoundException;
             registro3.setControl(RegistroLH.REGISTRO_OCUPADO);
 		    archivoLibros.setRegistro(registro3);
 		    archivoLibros.escribirRegistro();	
-		    System.out.println("5) *********** VOLCADO despues de aniadir tres registros ***********************");
+		    System.out.println("5) ******************** VOLCADO despues de aniadir tres registros ***************************************************");
 			archivoLibros.volcar();
-		    System.out.println("********************************************************************************");
+		    System.out.println("*********************************************************************************************************************");
 		    System.out.println();
 
             // 6) *************
             // EJEMPLO DE LECTURA DEL REGISTRO 0
             archivoLibros.leerRegistro(0);
             RegistroLibro registro0 = (RegistroLibro)archivoLibros.getRegistro();
-            System.out.println("6) *********** DATOS del registro que esta en la posicion 0 ********************");
+            System.out.println("6) ******************** DATOS del registro que esta en la posicion 0 ************************************************");
             System.out.println(registro0.toString());
-            System.out.println("********************************************************************************");
+            System.out.println("*********************************************************************************************************************");
             System.out.println();
             //*************
 
@@ -134,7 +134,7 @@ import java.io.FileNotFoundException;
             RegistroLibro registroMAX = (RegistroLibro)archivoLibros.getRegistro();
             System.out.println("7) *********** DATOS del registro que esta en la posicion fuera del rango ******");
             System.out.println(registroMAX.toString());
-            System.out.println("********************************************************************************");
+            System.out.println("*********************************************************************************************************************");
             System.out.println();
             //*************
 
@@ -142,27 +142,27 @@ import java.io.FileNotFoundException;
 		    // 8) EJEMPLO DE LECTURA DE UN REGISTRO QUE EXISTE
 		    archivoLibros.leerRegistro(1);
 		    RegistroLibro registro8 = (RegistroLibro)archivoLibros.getRegistro();
-		    System.out.println("8)*********** DATOS del registro que esta en la POSICION 1 **********************");
+		    System.out.println("8) ******************** DATOS del registro que esta en la POSICION 1 ************************************************");
 			System.out.println(registro8.toString());
-		    System.out.println("*********************************************************************************");
+		    System.out.println("*********************************************************************************************************************");
 		    System.out.println();
 
 
             //9) *************
             // EJEMPLO DE BORRADO DEL REGISTRO 0
             archivoLibros.borrarRegistro(0);
-            System.out.println("9) *********** VOLCADO despues de borrar el registro de la POSICION 0 ***********");
+            System.out.println("9) ******************** VOLCADO despues de borrar el registro de la POSICION 0 **************************************");
             archivoLibros.volcar();
-            System.out.println("*********************************************************************************");
+            System.out.println("*********************************************************************************************************************");
             System.out.println();
             //*************
 
             // 10) *************
             // EJEMPLO DE BORRADO DE UN REGISTRO FUERA DE RANGO.
             archivoLibros.borrarRegistro(100);
-            System.out.println("10) *********** VOLCADO despues de borrar el registro de la POSICION 100 (FUERA DE RANGO) **********");
+            System.out.println("10) ******************** VOLCADO despues de borrar el registro de la POSICION 100 (FUERA DE RANGO) ******************");
             archivoLibros.volcar();
-            System.out.println("*********************************************************************************");
+            System.out.println("*********************************************************************************************************************");
             System.out.println();
             //*************
 
@@ -170,17 +170,17 @@ import java.io.FileNotFoundException;
             // EJEMPLO DE BORRADO DE UN REGISTRO QUE SE ENCUENTRA EN LA LISTA DE HUECOS.
             // No hay nada en el registro 50. Es un hueco.
             archivoLibros.borrarRegistro(50);
-            System.out.println("11) *********** VOLCADO despues de borrar el registro de la POSICION 50 (DENTRO DE RANGO, lista de huecos) **********");
+            System.out.println("11) ******************** VOLCADO despues de borrar el registro de la POSICION 50 (DENTRO DE RANGO, lista de huecos)**");
             archivoLibros.volcar();
-            System.out.println("*********************************************************************************");
+            System.out.println("*********************************************************************************************************************");
             System.out.println();
             //*************
 
 		    // 12) EJEMPLO DE BORRADO DE UN REGISTRO QUE EXISTE
 		    archivoLibros.borrarRegistro(2);
-		    System.out.println("12) *********** VOLCADO despues de borrar el registro de la POSICION 2 **********");
+		    System.out.println("12) ******************** VOLCADO despues de borrar el registro de la POSICION 2 **************************************");
 			archivoLibros.volcar();
-		    System.out.println("*********************************************************************************");
+		    System.out.println("*********************************************************************************************************************");
 		    System.out.println();
 
 		    

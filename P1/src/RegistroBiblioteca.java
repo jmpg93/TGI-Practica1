@@ -114,7 +114,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   public int longitudRegistro()
 	   {
            //Dos veces la capacidad por que es el tamanño de un entero. En este caso hay dos, capacidad y codigo postal.
-           return this.TAMANIO_NOMBRE + this.TAMANIO_CAPACIDAD*2+ super.longitudRegistro();
+           return this.TAMANIO_NOMBRE*2 + this.TAMANIO_CAPACIDAD*2 + super.longitudRegistro();
 	   } 
 	   
   
@@ -128,8 +128,9 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   public void escribir(RandomAccessFile archivo) throws IOException {
            super.escribir(archivo);
            archivo.writeInt( this.getCapacidad() );
-           archivo.writeUTF(this.getNombre());
+           this.escribirCadena(getNombre(), this.TAMANIO_NOMBRE, archivo);
            archivo.writeInt(this.getCodPostal());
+
 	   }
 
 	   
@@ -141,7 +142,7 @@ Clase que representa un registro de campos asociados a una biblioteca.
 	   public void leer(RandomAccessFile archivo) throws IOException {
            super.leer(archivo);
            this.setCapacidad( archivo.readInt());
-           this.setNombre(archivo.readUTF());
+           this.setNombre(leerCadena(this.TAMANIO_NOMBRE, archivo));
            this.setCodPostal(archivo.readInt());
 	   }
 

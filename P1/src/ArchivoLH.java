@@ -160,7 +160,7 @@ import java.io.RandomAccessFile;
            {
                 System.out.println("La posición del registro no existe");
            }
-           else{
+           else if (posicion <= this.numRegistros()){
                this.archivo.seek(posicion*this.registro.longitudRegistro());
                int controlBorrado = this.archivo.readInt();  //no se como llamarlo
                if(controlBorrado == RegistroLH.REGISTRO_OCUPADO)
@@ -201,6 +201,6 @@ import java.io.RandomAccessFile;
 			   this.leerRegistro(pos);
 			   System.out.println("Registro "+ pos + ";   " + super.registro.toString());
 		   }
-		   System.out.println("****************** FIN DEL VOLCADO ***********************");
+		   System.out.println("************************************************* FIN DEL VOLCADO ***************************************************");
 	   }
 }
