@@ -131,11 +131,17 @@ public class ArchivoLH extends Archivo{
         //Si el control no es fin de lista buscamos el siguiente elemento en la lista de huecos. Ponemos el control de este en la cima de la lista.
         //3->2->-1 => 2->-1
         else {
+
             int anterior;
             this.archivo.seek(control * this.registro.longitudRegistro());
             anterior = this.archivo.readInt();
+
+            this.archivo.seek(control * this.registro.longitudRegistro());
+            this.archivo.writeInt(RegistroLH.REGISTRO_OCUPADO);
+
             this.archivo.seek(0);
             this.archivo.writeInt(anterior);
+
         }
         this.archivo.seek(control * this.registro.longitudRegistro());
         registro.escribir(this.archivo);
@@ -166,7 +172,7 @@ public class ArchivoLH extends Archivo{
      */
     public void borrarRegistro(int posicion) throws IOException {
         //Tenemos que estar dentro del rango
-        if(!(posicion < 1 || posicion > this.numRegistros()))
+        if((posicion < 1 || posicion > this.numRegistros()))
         {
             System.out.println("La posicion que busca del registro no existe en el archivo");
         }

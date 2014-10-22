@@ -171,10 +171,31 @@ public class PruebasBibliotecasLH {
 
             // 12) EJEMPLO DE BORRADO DE UN REGISTRO QUE EXISTE
             archivoBiblioteca.borrarRegistro(2);
-            System.out.println("12) ******************** VOLCADO despues de borrar el registro de la POSICION 2 ***************************");
+            System.out.println("12) ******************** VOLCADO despues de borrar el registro de la POSICION 2 *************************************");
             archivoBiblioteca.volcar();
             System.out.println("*********************************************************************************************************************");
             System.out.println();
+
+            archivoBiblioteca.borrarRegistro(3);
+            System.out.println("13) ******************** VOLCADO despues de borrar el registro de la POSICION 3 *************************************");
+            archivoBiblioteca.volcar();
+            System.out.println("*********************************************************************************************************************");
+            System.out.println();
+
+
+
+            RegistroBiblioteca registroF = new RegistroBiblioteca(59, "Estoy en dos", 28009, 50);
+            registroF.setControl(RegistroLH.REGISTRO_OCUPADO);
+            archivoBiblioteca.setRegistro(registroF);
+            archivoBiblioteca.escribirRegistro();
+
+
+
+            System.out.println("14) ******************** VOLCADO despues de insertar el registro ***************************************************");
+            archivoBiblioteca.volcar();
+            System.out.println("*********************************************************************************************************************");
+            System.out.println();
+
 
 
             // EJEMPLO DE CIERRE DEL ARCHIVO DE LIBROS

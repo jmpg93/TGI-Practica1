@@ -155,7 +155,7 @@ public class RegistroBiblioteca extends RegistroNumReg{
      */
     public String toString()
     {
-        return "RegistroNumReg [control=" + super.getControl() + ", numReg = "+ this.getNumReg()+ "nombre = " + this.getNombre() + ", capacidad = " + this.getCapacidad() + ", codigo postal = " + this.getCodPostal() + "]";
+        return "RegistroNumReg [control=" + super.getControl() + ", numReg = "+ this.getNumReg()+ ", nombre = " + this.getNombre() + ", capacidad = " + this.getCapacidad() + ", codigo postal = " + this.getCodPostal() + "]";
     }
 
 }
