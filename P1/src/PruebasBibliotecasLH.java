@@ -86,14 +86,14 @@ import java.io.FileNotFoundException;
            //*************
 
            // 4) EJEMPLO DE INSERCION DE UN NUEVO REGISTRO
-//           RegistroBiblioteca registro1 = new RegistroBiblioteca(20, "Azcona", 28002, 200);
-//           registro1.setControl(RegistroLH.REGISTRO_OCUPADO);
-//           archivoBiblioteca.setRegistro(registro1);
-//           archivoBiblioteca.escribirRegistro();
-//           System.out.println("4) ******************** VOLCADO despues de aniadir el primer registro ***********************************************");
-//           archivoBiblioteca.volcar();
-//           System.out.println("*********************************************************************************************************************");
-//           System.out.println();
+           RegistroBiblioteca registro1 = new RegistroBiblioteca(20, "Azcona", 28002, 200);
+           registro1.setControl(RegistroLH.REGISTRO_OCUPADO);
+           archivoBiblioteca.setRegistro(registro1);
+           archivoBiblioteca.escribirRegistro();
+           System.out.println("4) ******************** VOLCADO despues de aniadir el primer registro ***********************************************");
+           archivoBiblioteca.volcar();
+           System.out.println("*********************************************************************************************************************");
+           System.out.println();
 
 
            // 5) EJEMPLO DE INSERCION DE DOS REGISTROS MAS
